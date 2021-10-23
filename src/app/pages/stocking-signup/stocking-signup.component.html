@@ -1,0 +1,50 @@
+
+<div class="container">
+    <p>stocking-signup works!</p>
+
+    <form class="so-form" [formGroup]="stockingOrderForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="so-input" appearance="fill">
+            <mat-label>First name</mat-label>
+            <input matInput type="text" placeholder="John" formControlName="firstName" maxlength="25" required>
+            <mat-error *ngIf="stockingOrderForm.get('firstName').invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="so-input" appearance="fill">
+            <mat-label>Last name</mat-label>
+            <input matInput type="text" placeholder="Doe" formControlName="lastName" maxlength="25" required>
+            <mat-error *ngIf="stockingOrderForm.get('lastName').invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="so-input" appearance="fill">
+            <mat-label>Contact email</mat-label>
+            <input matInput type="text" placeholder="Doe" formControlName="email" maxlength="50" required>
+            <mat-error *ngIf="stockingOrderForm.get('lastName').invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="so-input" appearance="fill">
+            <mat-label>Contact phone number</mat-label>
+            <input matInput type="tel" placeholder="(843) 555-5555" formControlName="phone" maxlength="14" required>
+            <mat-error *ngIf="stockingOrderForm.get('phone').invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="so-input" appearance="fill">
+            <mat-label>How many stockings?</mat-label>
+            <input matInput type="number" placeholder="5" formControlName="stockingCount" min="1" max="5" required>
+            <mat-error *ngIf="stockingOrderForm.get('phone').invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="so-input" appearance="fill">
+            <mat-label>Pickup preference</mat-label>
+            <input matInput type="text" placeholder="house" formControlName="pickup" required>
+            <mat-error *ngIf="stockingOrderForm.get('pickup').invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="so-input" appearance="fill">
+            <mat-label>Enter a message</mat-label>
+            <input matInput type="text" placeholder="Hello!" formControlName="pickup">
+            <mat-error *ngIf="stockingOrderForm.get('message').invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    
+        <button mat-flat-button type="submit" color="primary" >Signup!</button>
+    </form>
+</div>
