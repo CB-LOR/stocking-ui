@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lor-stocking-ui';
+  snowflakes = Array(200);
 }
