@@ -1,6 +1,27 @@
 
 <div class="container">
-    <p>stocking-signup works!</p>
+    <h2>Sign up to contribute to the Lowcountry Orphan Relief Stocking Drive which is being coordinated in Cane Bay by Jeannette Meeks.</h2>
+
+    <h3>How it works:</h3>
+
+    <ol>
+        <li>Submit the form below.</li>
+        <li>We will get the number of stockings you request distributed to you - if picking up from us, we will set them outside our door 
+            with your name attached. Otherwise they will be emailed.</li>
+        <li>Be sure to read the FAQs on the <a target="_blank" href="https://lowcountryorphanrelief.org/whats-happening/stocking-drive-2021/">LOR website</a>.</li>
+        <li>Go shopping for the items on your list.</li>
+        <li>Bring the stockings and items back to us so that we can deliver to LOR (Or you are welcomed to deliver to LOR yourself).</li>
+    </ol>
+
+    <h3>Important dates to keep in mind:</h3>
+    <ul>
+        <li>Last day to get stockings is <strong>December 3, 2021</strong>.</li> 
+        <li>Stockings need to be returned to our residence by <strong>December 5, 2021</strong> so that they can be returned to LOR by the deadline.</li>
+        <li>If not able to return to us in time or need to return to LOR yourself, stockings must be returned by <strong>December 10, 2021</strong>.</li>
+    </ul> 
+
+    <p>For additional information, please refer to the 
+        <a target="_blank" href="https://lowcountryorphanrelief.org/whats-happening/stocking-drive-2021/">LOR website</a>.</p>
 
     <form class="so-form" [formGroup]="stockingOrderForm" (ngSubmit)="onSubmit()">
         <mat-form-field class="so-input" appearance="fill">
@@ -17,34 +38,45 @@
     
         <mat-form-field class="so-input" appearance="fill">
             <mat-label>Contact email</mat-label>
-            <input matInput type="text" placeholder="Doe" formControlName="email" maxlength="50" required>
+            <input matInput type="text" placeholder="jdoe@example.com" formControlName="email" maxlength="50" required>
             <mat-error *ngIf="stockingOrderForm.get('lastName').invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     
         <mat-form-field class="so-input" appearance="fill">
             <mat-label>Contact phone number</mat-label>
-            <input matInput type="tel" placeholder="(843) 555-5555" formControlName="phone" maxlength="14" required>
+            <input matInput type="tel" placeholder="(843) 555-5555" formControlName="phone" (keyup)="formatPhone($event)" maxlength="14" required>
             <mat-error *ngIf="stockingOrderForm.get('phone').invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
-    
+
         <mat-form-field class="so-input" appearance="fill">
             <mat-label>How many stockings?</mat-label>
-            <input matInput type="number" placeholder="5" formControlName="stockingCount" min="1" max="5" required>
-            <mat-error *ngIf="stockingOrderForm.get('phone').invalid">{{getErrorMessage()}}</mat-error>
+            <mat-select formControlName="stockingCount" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let stockingOpt of stockingOptions" [value]="stockingOpt">
+                {{stockingOpt}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="stockingOrderForm.get('stockingCount').hasError('required')">Please choose an option</mat-error>
         </mat-form-field>
     
         <mat-form-field class="so-input" appearance="fill">
-            <mat-label>Pickup preference</mat-label>
-            <input matInput type="text" placeholder="house" formControlName="pickup" required>
-            <mat-error *ngIf="stockingOrderForm.get('pickup').invalid">{{getErrorMessage()}}</mat-error>
+            <mat-label>How would you like to receive the stockings?</mat-label>
+            <mat-select formControlName="pickup" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let ro of receiptOptions" [value]="ro.val">
+                  {{ro.label}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="stockingOrderForm.get('pickup').hasError('required')">Please choose an option</mat-error>
+
         </mat-form-field>
     
         <mat-form-field class="so-input" appearance="fill">
             <mat-label>Enter a message</mat-label>
-            <input matInput type="text" placeholder="Hello!" formControlName="pickup">
+            <input matInput type="text" placeholder="Hello!" formControlName="message">
             <mat-error *ngIf="stockingOrderForm.get('message').invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     
-        <button mat-flat-button type="submit" color="primary" >Signup!</button>
+        <button mat-flat-button type="submit" color="primary" >Signup</button>
     </form>
 </div>
