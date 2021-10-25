@@ -45,7 +45,6 @@ export class StockingSignupComponent {
   }
 
   onSubmit() {
-    console.log(this.stockingOrderForm.value);
     this.sss.submitStockingOrder(this.stockingOrderForm.value).subscribe(resp => {
       console.log(resp);
     });
