@@ -10,11 +10,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StockingSignupComponent } from './pages/stocking-signup/stocking-signup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ThankyouComponent } from './pages/thankyou/thankyou.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StockingSignupComponent
+    StockingSignupComponent,
+    ThankyouComponent
   ],
   imports: [
     BrowserModule,
