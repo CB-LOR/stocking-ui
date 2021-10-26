@@ -79,6 +79,6 @@
             <mat-error *ngIf="stockingOrderForm.get('message').invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     
-        <button mat-flat-button type="submit" color="primary" >Signup</button>
+        <button mat-flat-button type="submit" color="primary" [disabled]="stockingOrderForm.untouched || stockingOrderForm.invalid">Signup</button>
     </form>
 </div>

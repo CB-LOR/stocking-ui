@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { StockingSignupSubmitService } from 'src/app/service/stocking-signup-submit.service';
 
@@ -10,6 +11,7 @@ import { StockingSignupSubmitService } from 'src/app/service/stocking-signup-sub
 export class StockingSignupComponent {
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private sss: StockingSignupSubmitService
   ) { }
@@ -45,9 +47,11 @@ export class StockingSignupComponent {
   }
 
   onSubmit() {
+    if(this.stockingOrderForm.untouched || this.stockingOrderForm.invalid) return;
     this.sss.submitStockingOrder(this.stockingOrderForm.value).subscribe(resp => {
-      console.log(resp);
-    });
+      let firstName = this.stockingOrderForm.get('firstName').value;
+      this.router.navigate(['/thankyou', {name: firstName}]);
+    }, err => console.log(err));
   }
 
 }
