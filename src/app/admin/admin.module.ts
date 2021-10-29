@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { OrderDashComponent } from './order-dash/order-dash.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminService } from './admin.service';
-import { MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -12,7 +13,8 @@ import { MatTableModule} from '@angular/material/table';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule
   ],
   providers: [
     AdminService
