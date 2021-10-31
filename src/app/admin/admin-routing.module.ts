@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from './admin.component';
 
-import { AdminRoutingRoutingModule } from './admin-routing-routing.module';
-
+const routes: Routes = [
+  { path: '', component: AdminComponent },
+  { path: '**', redirectTo: '/stocking-signup' }
+];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    AdminRoutingRoutingModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class AdminRoutingModule { }
