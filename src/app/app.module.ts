@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule }  from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { ThankyouComponent } from './pages/thankyou/thankyou.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatExpansionModule,
     MatInputModule,
     MatSelectModule,
     AdminModule

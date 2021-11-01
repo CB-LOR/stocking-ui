@@ -28,6 +28,8 @@ export class StockingSignupComponent {
 
   stockingOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   receiptOptions = [{label: 'Pickup from Meeks residence', val: 'home'}, {label: 'Send via email', val: 'email'}];
+  panelOpenState = false;
+  defaultPanelState = true;
 
   formatPhone(event){
     let phone = event.target.value;
