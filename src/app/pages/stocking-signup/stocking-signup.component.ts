@@ -29,7 +29,7 @@ export class StockingSignupComponent {
   stockingOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   receiptOptions = [{label: 'Pickup from Meeks residence', val: 'home'}, {label: 'Send via email', val: 'email'}];
   panelOpenState = false;
-  defaultPanelState = true;
+  submittingForm = false;
 
   formatPhone(event){
     let phone = event.target.value;
@@ -50,10 +50,15 @@ export class StockingSignupComponent {
 
   onSubmit() {
     if(this.stockingOrderForm.untouched || this.stockingOrderForm.invalid) return;
+    this.submittingForm = true;
+    this.stockingOrderForm.disable();
     this.sss.submitStockingOrder(this.stockingOrderForm.value).subscribe(resp => {
       let firstName = this.stockingOrderForm.get('firstName').value;
       this.router.navigate(['/thankyou', {name: firstName}]);
-    }, err => console.log(err));
+    }, err => {
+      console.log(err);
+      this.stockingOrderForm.enable();
+    });
   }
 
 }

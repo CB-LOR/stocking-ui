@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule }  from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { ThankyouComponent } from './pages/thankyou/thankyou.component';
     MatExpansionModule,
     MatInputModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
     AdminModule
   ],
   providers: [],
