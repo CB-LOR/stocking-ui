@@ -7,6 +7,7 @@ import { MatSelectModule }  from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AdminModule } from './admin/admin.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StockingSignupComponent } from './pages/stocking-signup/stocking-signup.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,7 +27,8 @@ import { ThankyouComponent } from './pages/thankyou/thankyou.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

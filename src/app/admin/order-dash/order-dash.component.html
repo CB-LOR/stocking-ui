@@ -1,0 +1,74 @@
+<div class="admin-container">
+    <h2>CB LOR Stocking Drive Manager</h2>
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Ordered
+        </ng-template>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Name</th>
+              <td mat-cell *matCellDef="let order">{{order.firstName + ' ' + order.lastName}}</td>
+            </ng-container>
+      
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef>Email</th>
+              <td mat-cell *matCellDef="let order">{{order.email}}</td>
+            </ng-container>
+      
+            <ng-container matColumnDef="phone">
+              <th mat-header-cell *matHeaderCellDef>Phone</th>
+              <td mat-cell *matCellDef="let order">{{order.phone}}</td>
+            </ng-container>
+      
+            <ng-container matColumnDef="pickup">
+                <th mat-header-cell *matHeaderCellDef>Pickup</th>
+                <td mat-cell *matCellDef="let order">{{order.pickup}}</td>
+            </ng-container>
+      
+            <ng-container matColumnDef="stockings">
+              <th mat-header-cell *matHeaderCellDef>Stockings</th>
+              <td mat-cell *matCellDef="let order">{{order.stockingCount}}</td>
+            </ng-container>
+      
+            <ng-container matColumnDef="message">
+                <th mat-header-cell *matHeaderCellDef>Message</th>
+                <td mat-cell *matCellDef="let order">{{order.message}}</td>
+            </ng-container>
+      
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-tab>
+    
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Prepared
+        </ng-template>
+        <div class="img-cont">
+          <img alt="nothing to see here" src="../../../assets/not_found.png">
+          <h3>Nothing to see here...</h3>
+        </div>
+      </mat-tab>
+    
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Delivered
+        </ng-template>
+        <div class="img-cont">
+          <img alt="nothing to see here" src="../../../assets/not_found.png">
+          <h3>Nothing to see here...</h3>
+        </div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Returned
+        </ng-template>
+        <div class="img-cont">
+          <img alt="nothing to see here" src="../../../assets/not_found.png">
+          <h3>Nothing to see here...</h3>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+</div>

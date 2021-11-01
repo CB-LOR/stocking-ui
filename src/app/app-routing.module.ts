@@ -6,7 +6,8 @@ import { ThankyouComponent } from './pages/thankyou/thankyou.component';
 const routes: Routes = [
   { path: 'stocking-signup', component: StockingSignupComponent },
   { path: 'thankyou', component: ThankyouComponent },
-  { path: '**', component: StockingSignupComponent }
+  { path: 'order-admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+  { path: '**', redirectTo: '/stocking-signup' }
 ];
 
 @NgModule({

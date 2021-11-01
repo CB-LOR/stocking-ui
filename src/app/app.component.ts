@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'lor-stocking-ui';
+  title = 'Cane Bay Stocking Drive for LOR';
   snowflakes = Array(200);
 }
