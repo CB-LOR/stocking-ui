@@ -4,7 +4,7 @@
 
     <mat-accordion>
 
-        <mat-expansion-panel (opened)="defaultPanelState = true" (closed)="defaultPanelState = false">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 How it works - Steps for Cane Bay
@@ -58,60 +58,66 @@
         </mat-expansion-panel>
     </mat-accordion>
 
-    <form class="so-form" [formGroup]="stockingOrderForm" (ngSubmit)="onSubmit()">
-        <mat-form-field class="so-input" appearance="fill">
-            <mat-label>First name</mat-label>
-            <input matInput type="text" placeholder="John" formControlName="firstName" maxlength="25" required>
-            <mat-error *ngIf="stockingOrderForm.get('firstName').invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-    
-        <mat-form-field class="so-input" appearance="fill">
-            <mat-label>Last name</mat-label>
-            <input matInput type="text" placeholder="Doe" formControlName="lastName" maxlength="25" required>
-            <mat-error *ngIf="stockingOrderForm.get('lastName').invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-    
-        <mat-form-field class="so-input" appearance="fill">
-            <mat-label>Contact email</mat-label>
-            <input matInput type="text" placeholder="jdoe@example.com" formControlName="email" maxlength="50" required>
-            <mat-error *ngIf="stockingOrderForm.get('lastName').invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-    
-        <mat-form-field class="so-input" appearance="fill">
-            <mat-label>Contact phone number</mat-label>
-            <input matInput type="tel" placeholder="(843) 555-5555" formControlName="phone" (keyup)="formatPhone($event)" maxlength="14" required>
-            <mat-error *ngIf="stockingOrderForm.get('phone').invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
+    <div class="so-container">
+        <form class="so-form" [formGroup]="stockingOrderForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="so-input" appearance="fill">
+                <mat-label>First name</mat-label>
+                <input matInput type="text" placeholder="John" formControlName="firstName" maxlength="25" required>
+                <mat-error *ngIf="stockingOrderForm.get('firstName').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field class="so-input" appearance="fill">
+                <mat-label>Last name</mat-label>
+                <input matInput type="text" placeholder="Doe" formControlName="lastName" maxlength="25" required>
+                <mat-error *ngIf="stockingOrderForm.get('lastName').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field class="so-input" appearance="fill">
+                <mat-label>Contact email</mat-label>
+                <input matInput type="text" placeholder="jdoe@example.com" formControlName="email" maxlength="50" required>
+                <mat-error *ngIf="stockingOrderForm.get('lastName').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field class="so-input" appearance="fill">
+                <mat-label>Contact phone number</mat-label>
+                <input matInput type="tel" placeholder="(843) 555-5555" formControlName="phone" (keyup)="formatPhone($event)" maxlength="14" required>
+                <mat-error *ngIf="stockingOrderForm.get('phone').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
 
-        <mat-form-field class="so-input" appearance="fill">
-            <mat-label>How many stockings?</mat-label>
-            <mat-select formControlName="stockingCount" required>
-              <mat-option>--</mat-option>
-              <mat-option *ngFor="let stockingOpt of stockingOptions" [value]="stockingOpt">
-                {{stockingOpt}}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="stockingOrderForm.get('stockingCount').hasError('required')">Please choose an option</mat-error>
-        </mat-form-field>
-    
-        <mat-form-field class="so-input" appearance="fill">
-            <mat-label>How would you like to receive the stockings?</mat-label>
-            <mat-select formControlName="pickup" required>
+            <mat-form-field class="so-input" appearance="fill">
+                <mat-label>How many stockings?</mat-label>
+                <mat-select formControlName="stockingCount" required>
                 <mat-option>--</mat-option>
-                <mat-option *ngFor="let ro of receiptOptions" [value]="ro.val">
-                  {{ro.label}}
+                <mat-option *ngFor="let stockingOpt of stockingOptions" [value]="stockingOpt">
+                    {{stockingOpt}}
                 </mat-option>
-              </mat-select>
-              <mat-error *ngIf="stockingOrderForm.get('pickup').hasError('required')">Please choose an option</mat-error>
+                </mat-select>
+                <mat-error *ngIf="stockingOrderForm.get('stockingCount').hasError('required')">Please choose an option</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field class="so-input" appearance="fill">
+                <mat-label>How would you like to receive the stockings?</mat-label>
+                <mat-select formControlName="pickup" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let ro of receiptOptions" [value]="ro.val">
+                    {{ro.label}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="stockingOrderForm.get('pickup').hasError('required')">Please choose an option</mat-error>
 
-        </mat-form-field>
-    
-        <mat-form-field class="so-input" appearance="fill">
-            <mat-label>Enter a message</mat-label>
-            <input matInput type="text" placeholder="Hello!" formControlName="message">
-            <mat-error *ngIf="stockingOrderForm.get('message').invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-    
-        <button mat-flat-button type="submit" color="primary" [disabled]="stockingOrderForm.untouched || stockingOrderForm.invalid">Signup</button>
-    </form>
+            </mat-form-field>
+        
+            <mat-form-field class="so-input" appearance="fill">
+                <mat-label>Enter a message</mat-label>
+                <input matInput type="text" placeholder="Hello!" formControlName="message">
+                <mat-error *ngIf="stockingOrderForm.get('message').invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        
+            <button mat-flat-button type="submit" color="primary" [disabled]="stockingOrderForm.untouched || stockingOrderForm.invalid">Signup</button>
+        </form>
+
+        <div *ngIf="submittingForm" class="wait">
+            <mat-spinner></mat-spinner>
+        </div>
+    </div>
 </div>

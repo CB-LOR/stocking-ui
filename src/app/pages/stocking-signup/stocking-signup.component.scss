@@ -6,3 +6,16 @@
 .so-input {
     width: 100%;
 }
+
+.so-container{
+    position: relative;
+    margin: 16px auto;
+}
+
+.wait {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
