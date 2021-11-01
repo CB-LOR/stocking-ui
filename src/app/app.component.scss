@@ -8,6 +8,16 @@ header{
     filter: drop-shadow(0 0 10px white);
     position: relative;
 }
+
+.stocking-img {
+    float: left;
+    padding: 8px;
+    width: 76px;
+}
+
+.stocking-img img {
+    width: 100%;
+}
   
 @function random_range($min, $max) {
     $rand: random();
@@ -49,5 +59,11 @@ header{
             transform: translate($random-x-end-yoyo, 100vh) scale($random-scale);
         }
         }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .stocking-img {
+        display: none;
     }
 }
