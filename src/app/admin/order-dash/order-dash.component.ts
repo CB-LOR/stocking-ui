@@ -18,10 +18,8 @@ export class OrderDashComponent implements OnInit {
   ngOnInit(): void {
     
     this.orderSub = this.admin.orderListObs.subscribe(orderRes => {
-      console.log('In comp: ', orderRes);
       this.dataSource = orderRes;
     });
-    console.log("Calling api");
     this.admin.getReport();
   }
 

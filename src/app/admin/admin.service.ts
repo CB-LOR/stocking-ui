@@ -20,12 +20,9 @@ export class AdminService {
   }
 
   public getReport(): void {
-    console.log(this.token);
-    console.log(this.headers);
     this.http.get('https://cm0ki0o3l0.execute-api.us-east-1.amazonaws.com/Prod/stocking/orders/', 
       { headers: this.headers }
     ).subscribe(res => {
-        console.log(res);
         this.orderList = (res as Order[]);
         this.orderListObs.next(this.orderList);
       },

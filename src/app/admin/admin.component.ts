@@ -16,12 +16,12 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('admin init');
     onAuthUIStateChange((authState, authData) => {
-      console.log('user authenticated');
       this.authState = authState;
       this.user = authData as CognitoUserInterface;
-      this.admin.setToken(this.user.signInUserSession.idToken.jwtToken);
+      if(this.user != undefined){
+        this.admin.setToken(this.user.signInUserSession.idToken.jwtToken);
+      }
       this.ref.detectChanges();
     });
   }
