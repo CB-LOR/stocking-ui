@@ -16,9 +16,7 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('admin init');
     onAuthUIStateChange((authState, authData) => {
-      console.log('user authenticated');
       this.authState = authState;
       this.user = authData as CognitoUserInterface;
       if(this.user != undefined){
