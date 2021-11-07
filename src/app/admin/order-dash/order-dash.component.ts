@@ -78,10 +78,10 @@ export class OrderDashComponent implements OnInit {
     this.admin.updateOrderStatus(order, orderStatus).subscribe(resp => {
       order.orderStatus = orderStatus;
       order.order_ts = resp.order_ts;
-      console.log(order);
       // remove from current status
       let orderIndex = this.dataSource[curOrderStatus + 'Index'].indexOf(order.email);
       this.dataSource[curOrderStatus].splice(orderIndex, 1);
+      this.dataSource[curOrderStatus + 'Index'].splice(orderIndex, 1);
       // add to new status
       this.dataSource[orderStatus].push(order);
       this.dataSource[orderStatus + 'Index'].push(order.email);
