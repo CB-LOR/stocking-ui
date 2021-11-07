@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderDashComponent } from './order-dash/order-dash.component';
 import { AdminService } from './admin.service';
-import { MatTableModule } from '@angular/material/table';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify, { Auth } from 'aws-amplify';
 import { AdminComponent } from './admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
+import { FormsModule } from '@angular/forms';
 
 Amplify.configure(
   {
@@ -73,9 +73,9 @@ Amplify.configure(
   declarations: [OrderDashComponent, AdminComponent],
   imports: [
     CommonModule,
+    FormsModule,
     AdminRoutingModule,
-    MatTableModule,
-    MatTabsModule,
+    MatButtonModule,
     AmplifyUIAngularModule
   ],
   providers: [

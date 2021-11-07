@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class AdminService {
@@ -30,6 +30,18 @@ export class AdminService {
         console.log(err);
       });
   }
+
+  public updateOrderStatus(order: Order, newOrderStatus: string): Observable<any> {
+    let body = {
+      email: order.email,
+      orderStatus: newOrderStatus
+    };
+
+    return this.http.put('https://cm0ki0o3l0.execute-api.us-east-1.amazonaws.com/Prod/stocking/orders/update',
+      body,
+      { headers: this.headers }
+    );
+  }
 }
 
 export class Order{
@@ -41,4 +53,5 @@ export class Order{
   phone: string;
   pickup: string;
   stockingCount: number;
+  orderStatus: string;
 }
