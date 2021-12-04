@@ -18,3 +18,26 @@ table{
 }
 
 img{ width: 100%; }
+
+th{
+    text-align: left;
+    color: gray;
+    font-size: 14px;
+    padding: 16px 0;
+}
+
+td{
+    padding: 4px;
+}
+
+.mat-column-phone, .mat-column-orderAction{
+    width: 9%;
+}
+
+.mat-column-email{
+    width: 15%;
+}
+
+.mat-column-stockings, .mat-column-pickup{
+    width: 5%;
+}
