@@ -34,6 +34,7 @@ export class AdminService {
   public updateOrderStatus(order: Order, newOrderStatus: string): Observable<any> {
     let body = {
       email: order.email,
+      order_ts: order.order_ts,
       orderStatus: newOrderStatus
     };
 
@@ -50,6 +51,7 @@ export class Order{
   lastName: string;
   message: string;
   order_ts: string;
+  order_update_ts: string;
   phone: string;
   pickup: string;
   stockingCount: number;
