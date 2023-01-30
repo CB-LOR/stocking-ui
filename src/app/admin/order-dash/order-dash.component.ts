@@ -33,6 +33,12 @@ export class OrderDashComponent implements OnInit {
     returned: 3
   }
   status: string; 
+  statusCount: {
+    ordered: 0,
+    prepared: 0,
+    delivered: 0,
+    returned: 0
+  }
   updateAction: number;
   showDataTable = false;
   tableData: Array<any>;
@@ -52,9 +58,11 @@ export class OrderDashComponent implements OnInit {
         if(order.orderStatus === undefined) { // if no status, ordered
           this.dataSource.ordered.push(order);
           this.dataSource.orderedIndex.push(order.email);
+          this.statusCount.ordered += 1;
         } else {
           this.dataSource[order.orderStatus].push(order);
           this.dataSource[order.orderStatus + 'Index'].push(order.email);
+          this.statusCount[order.orderStatus] += 1;
         }
       });
       this.tableData = this.dataSource[this.status];
